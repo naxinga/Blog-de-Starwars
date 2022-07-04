@@ -1,0 +1,10 @@
+img {
+    height: 50px;
+    margin-left: 100px;
+}
+
+button{
+    background: none;
+    color: red;
+    text-decoration:none;
+}

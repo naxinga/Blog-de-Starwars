@@ -1,16 +1,9 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
+			personajes: [
 				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
+					
 				}
 			]
 		},
@@ -19,24 +12,37 @@ const getState = ({ getStore, getActions, setStore }) => {
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
-			loadSomeData: () => {
+			loadSomeData: async() => {
+				try{
+					const resp = await fetch('https://www.swapi.tech/api/people', {
+					  method: "GET", // Si no se le especifica metodo es GET, aqui sobraría.
+					})
+				
+					  const data = await resp.json(); // (returns promise) will try to parse the result as json as return a promise that you can .then for results
+					  setStore({ personajes : data.results})
+
+					return null;					  
+				
+				  } catch(error) {
+					  console.log(error);
+				  }
 				/**
 					fetch().then().then(data => setStore({ "foo": data.bar }))
 				*/
 			},
-			changeColor: (index, color) => {
+			changePersonaje: (index, color) => {
 				//get the store
 				const store = getStore();
 
 				//we have to loop the entire demo array to look for the respective index
 				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
+				const PJ = store.personajes.map(() => {
+					
+					return ;
 				});
 
 				//reset the global store
-				setStore({ demo: demo });
+				setStore({ personajes : data.results });
 			}
 		}
 	};

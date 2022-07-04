@@ -7,22 +7,20 @@ export const Navbar = () => {
 		<nav className="navbar navbar-dark ">
 			<div className="d-flex">
 			<Link to="/">
-				<a className="navbar-brand mb-0" id="logo" >
-						<img src="https://i.pinimg.com/originals/66/61/1c/66611ce3c500946672757fd244cc6b41.gif"></img>
-				</a>
+				<img src="https://i.pinimg.com/originals/66/61/1c/66611ce3c500946672757fd244cc6b41.gif"></img>
 			</Link>			
-			<Link to="/personajes">
-				<button class="navbar"> Personajes</button>
+			<Link  to="/personajes">
+			<button className="navbar-item">Personajes</button>
 			</Link>
 		
 			
 			<Link to="/planetas">
-				<button class="navbar"> Planetas</button>
+				<button className="navbar-item"> Planetas</button>
 			</Link>
 			
 			
 			<Link to="/vehiculos">
-				<button class="navbar"> Vehículos</button>
+				<button className="navbar-item"> Vehículos</button>
 			</Link>	
 			</div>		
 		</nav>

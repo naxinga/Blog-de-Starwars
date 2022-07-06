@@ -7,20 +7,6 @@ import "../../styles/demo.css";
 
 export const Personajes = () => {
 	const { store, actions } = useContext(Context);
-	
-	const imprimir = ! store.personajes === undefined ?  store.personajes.map((pjs) =>(
-	<div className="row">
-		<div className="col">
-			<div className="card bg-dark text-white" id={pjs.uid}>
-				<img src="..." className="card-img-top" alt="..."/>
-				<div className="card-body">
-					<h5 className="card-title">{pjs.name}</h5>
-				</div>
-			</div>
-		</div>							
-	</div>
-	)): "L"
-
 	return (
 		<div className="container">
 			<div className="jumbotron text-light">
@@ -30,7 +16,24 @@ export const Personajes = () => {
 				Crecimos con ellos, lloramos por sus muertes, nos reíamos de sus bromas, se convirtieron en memes, los idolatrábamos y a otros los despreciábamos. Hay un personaje de Star Wars para cada uno de nosotros y significan algo diferente para cada fanático.</p>
   				<hr className="my-4"/>
 			</div>
-			{imprimir}
+			{
+				store.personajes.length >0 ? store.personajes.map((pj,i) => {
+					return(
+						<div className="row" key={pj.uid}>
+							<div className="col">
+								<div className="card bg-dark text-white" >
+									<div className="card-body">
+										<h5 className="card-title">{pj.name}</h5>
+									</div>
+								</div>
+							</div>							
+						</div>
+					)
+				}):
+				<div className="card-body">
+					<h5 className="card-title text-light">Loading...</h5>
+				</div>
+			}
 		</div>
 	);
 };

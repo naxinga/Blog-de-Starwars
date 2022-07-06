@@ -1,18 +1,14 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			personajes: [
-				{
-					
-				}
-			]
+			personajes: [],
+			planetas: [],
+			naves: [],
+			favoritos: []
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-			loadSomeData: async() => {
+			
+			getPersonajes: async() => {
 				try{
 					const resp = await fetch('https://www.swapi.tech/api/people', {
 					  method: "GET", // Si no se le especifica metodo es GET, aqui sobraría.
@@ -26,23 +22,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  } catch(error) {
 					  console.log(error);
 				  }
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
 			},
-			changePersonaje: (index, color) => {
-				//get the store
-				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const PJ = store.personajes.map(() => {
-					
-					return ;
-				});
-
-				//reset the global store
-				setStore({ personajes : data.results });
+			getPlanetas: async() => {
+				try{
+					const resp = await fetch('https://www.swapi.tech/api/planets', {
+					  method: "GET", 
+					})				
+					  const data = await resp.json();
+					  setStore({ planetas : data.results})
+					return null;				
+				  } catch(error) {
+					  console.log(error);
+				  }
+			},
+			getNaves: async() => {
+				try{
+					const resp = await fetch('https://www.swapi.tech/api/starships', {
+					  method: "GET", 
+					})				
+					  const data = await resp.json();
+					  setStore({ naves : data.results})
+					return null;				
+				  } catch(error) {
+					  console.log(error);
+				  }
 			}
 		}
 	};

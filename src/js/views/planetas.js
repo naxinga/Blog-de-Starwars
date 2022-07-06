@@ -13,13 +13,13 @@ export const Planetas = () => {
                 <hr className="my-4"/>
 			</div>
 			{
-				store.planetas.length >0 ? store.planetas.map((planets,i) => {
+				store.planetas.length >0 ? store.planetas.map((planets) => {
 					return(
 						<div className="row" key={planets.uid}>
 							<div className="col">
 								<div className="card bg-dark text-white" >
 									<div className="card-body">
-										<h5 className="card-title">{planets.name}</h5>
+										<h5 className="card-title">{planets.name}<button type="button" className="btn btn-danger float-end">Ir a la tarjeta de {planets.name}</button></h5>
 									</div>
 								</div>
 							</div>							

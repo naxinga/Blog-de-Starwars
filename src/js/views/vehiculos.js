@@ -13,13 +13,13 @@ export const Vehiculos = () => {
   				<hr className="my-4"/>
 			</div>
 			{
-				store.naves.length >0 ? store.naves.map((nave,i) => {
+				store.naves.length >0 ? store.naves.map((nave) => {
 					return(
 						<div className="row" key={nave.uid}>
 							<div className="col">
 								<div className="card bg-dark text-white" >
 									<div className="card-body">
-										<h5 className="card-title">{nave.name}</h5>
+										<h5 className="card-title">{nave.name}<button type="button" className="btn btn-danger float-end">Ir a la tarjeta de {nave.name}</button></h5>
 									</div>
 								</div>
 							</div>							

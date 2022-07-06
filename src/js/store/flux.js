@@ -2,9 +2,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			personajes: [],
+			personales: [],
 			planetas: [],
 			naves: [],
-			favoritos: []
+			favoritos: [],
+			pid: "",
 		},
 		actions: {
 			
@@ -46,7 +48,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  } catch(error) {
 					  console.log(error);
 				  }
+			},
+			getPersonales: async(id) => {
+				try{
+					const resp = await fetch('https://www.swapi.tech/api/people/'+ id, {
+					  method: "GET", 
+					})				
+					  const data = await resp.json();
+					  setStore({ personales : data.result.properties})
+					return null;				
+				  } catch(error) {
+					  console.log(error);
+				  }
 			}
+			
 		}
 	};
 };

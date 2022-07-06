@@ -7,6 +7,7 @@ import "../../styles/demo.css";
 
 export const Personajes = () => {
 	const { store, actions } = useContext(Context);
+		
 	return (
 		<div className="container">
 			<div className="jumbotron text-light">
@@ -17,13 +18,13 @@ export const Personajes = () => {
   				<hr className="my-4"/>
 			</div>
 			{
-				store.personajes.length >0 ? store.personajes.map((pj,i) => {
+				store.personajes.length >0 ? store.personajes.map((pj) => {
 					return(
 						<div className="row" key={pj.uid}>
 							<div className="col">
 								<div className="card bg-dark text-white" >
 									<div className="card-body">
-										<h5 className="card-title">{pj.name}</h5>
+										<h5 className="card-title">{pj.name} <Link  to={"/personales/" + pj.uid}><button type="button" className="btn btn-danger float-end">Ir a la tarjeta de {pj.name}</button></Link></h5>
 									</div>
 								</div>
 							</div>							

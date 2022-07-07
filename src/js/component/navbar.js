@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../../styles/navbar.css";
+import favs from "./favoritos.jsx";
 
 export const Navbar = () => {
 	return (
@@ -21,7 +22,8 @@ export const Navbar = () => {
 			
 			<Link to="/vehiculos">
 				<button className="navbar-item"> Vehículos</button>
-			</Link>	
+			</Link>
+			<favs/>
 			</div>		
 		</nav>
 	);

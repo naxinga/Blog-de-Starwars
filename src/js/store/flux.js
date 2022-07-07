@@ -1,3 +1,5 @@
+import { Personajes } from "../views/personajes";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -5,7 +7,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			cartas: [],
 			planetas: [],
 			naves: [],
-			favoritos: [],
+			favoritos: ["luke","sky"],
 			pid: "",
 		},
 		actions: {
@@ -23,8 +25,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 							method: "GET",
 						})
 						const data = await resp.json();
-						//let cartitas = [];
-						//cartitas = cartitas.push(data.result.properties)
+						//setStore([{...cartas},{cartas : data.result.properties}])
 						setStore({cartas : data.result.properties})
 					  })
 					  
@@ -32,7 +33,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  } catch(error) {
 					  console.log(error);
 				  }
-				console.log(cartas);
 			},
 			getPlanetas: async() => {
 				try{
@@ -69,6 +69,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  } catch(error) {
 					  console.log(error);
 				  }
+			},
+			addFavs: (add) =>{
+				setStore([...favoritos,{favoritos : add.name}])
+			},
+
+			delFavs: (del) =>{
+				let a = [...favoritos]
+        		a.splice(del,1);
+        		setStore({favoritos: a});
 			}
 			
 			

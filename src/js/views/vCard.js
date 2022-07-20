@@ -3,13 +3,13 @@ import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/personales.css";
 
-export const Cartas = () => {
+export const CartasV = () => {
     const { store, actions } = useContext(Context);
 	const {id} = useParams();
-	const urlImage = "https://starwars-visualguide.com/assets/img/characters/" + id + ".jpg"
+	const urlImage = "https://starwars-visualguide.com/assets/img/starships/" + id + ".jpg"
 
 	useEffect(() => {
-		actions.getCartas(id)
+		actions.getCartasV(id)
 	},[]);
 
     return(
@@ -24,11 +24,11 @@ export const Cartas = () => {
 				</div>
 				<div class="col">
 					<div class="cardJumbo">
-						<h1>Nombre: {store.cartas.name}   </h1>
-						<p>Altura: {store.cartas.height} </p>
-						<p>Color de Pelo: {store.cartas.hair_color} </p>
-						<p>Género: {store.cartas.gender} </p>
-						<p>Nacimiento: {store.cartas.birth_year} </p>
+						<h1>Modelo: {store.cartasV.model}   </h1>
+						<p>Clase: {store.cartasV.starship_class} </p>
+						<p>Pasajeros: {store.cartasV.passengers} </p>
+						<p>Tripulación: {store.cartasV.crew} </p>
+						<p>Precio: {store.cartasV.cost_in_credits} </p>
 					</div>
 				</div>	
 			</div>	

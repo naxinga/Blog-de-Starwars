@@ -19,7 +19,7 @@ export const Planetas = () => {
 							<div className="col">
 								<div className="card bg-dark text-white" >
 									<div className="card-body">
-										<h5 className="card-title">{planets.name}<button type="button" className="btn btn-danger float-end">Ir a la tarjeta de {planets.name}</button></h5>
+										<h5 className="card-title">{planets.name} <Link  to={"/planetCard/" + planets.uid}><button type="button" className="btn btn-danger float-end">Ir a la tarjeta de {planets.name}</button></Link></h5>
 									</div>
 								</div>
 							</div>							

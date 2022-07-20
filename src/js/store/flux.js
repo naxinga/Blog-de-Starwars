@@ -6,7 +6,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			personajes: [],
 			cartas: [],
 			planetas: [],
+			cartasP: [],
 			naves: [],
+			cartasV: [],
 			favoritos: ["luke","sky"],
 
 		},
@@ -57,6 +59,33 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})				
 					  const data = await resp.json();
 					  setStore({ cartas : data.result.properties})
+					return null;				
+				  } catch(error) {
+					  console.log(error);
+				  }
+			},
+			getCartasP: async(id) => {
+				try{
+					const resp = await fetch('https://www.swapi.tech/api/planets/'+ id, {
+					  method: "GET", 
+					})				
+					  const data = await resp.json();
+					  setStore({ cartasP : data.result.properties})
+					return null;				
+				  } catch(error) {
+					  console.log(error);
+				  }
+			},
+			addFavs: (add) =>{
+				setStore([...favoritos,{favoritos : add.name}])
+			},
+			getCartasV: async(id) => {
+				try{
+					const resp = await fetch('https://www.swapi.tech/api/starships/'+ id, {
+					  method: "GET", 
+					})				
+					  const data = await resp.json();
+					  setStore({ cartasV : data.result.properties})
 					return null;				
 				  } catch(error) {
 					  console.log(error);

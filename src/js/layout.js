@@ -7,6 +7,8 @@ import { Personajes } from "./views/personajes";
 import { Planetas } from "./views/planetas";
 import { Vehiculos } from "./views/vehiculos";
 import { Cartas } from "./views/personales";
+import { CartasP } from "./views/planetCard";
+import { CartasV } from "./views/vCard";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -38,6 +40,12 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/personales/:id">
 							<Cartas />
+						</Route>
+						<Route exact path="/planetCard/:id">
+							<CartasP />
+						</Route>
+						<Route exact path="/vCard/:id">
+							<CartasV />
 						</Route>
 					</Switch>
 					<Footer />

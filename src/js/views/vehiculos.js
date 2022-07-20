@@ -19,7 +19,7 @@ export const Vehiculos = () => {
 							<div className="col">
 								<div className="card bg-dark text-white" >
 									<div className="card-body">
-										<h5 className="card-title">{nave.name}<button type="button" className="btn btn-danger float-end">Ir a la tarjeta de {nave.name}</button></h5>
+										<h5 className="card-title">{nave.name} <Link  to={"/vCard/" + nave.uid}><button type="button" className="btn btn-danger float-end">Ir a la tarjeta de {nave.name}</button></Link></h5>
 									</div>
 								</div>
 							</div>							

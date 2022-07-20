@@ -1,12 +1,20 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
+import "...src/styles/personales.css";
 
 export const Cartas = () => {
     const { store, actions } = useContext(Context);
+	const {id} = useParams();
+	const urlImage = "https://starwars-visualguide.com/assets/img/characters/" + id + ".jpg"
+
+	useEffect(() => {
+		actions.getCartas(id)
+	},[]);
+
     return(
-        <div className="container">
-			<div className="jumbotron text-light">
+        <div className="container card">
+			<div className="jumbotron text-light card2">
   				<h1 className="display-4">{store.cartas.name}</h1>
   				<p className="lead">Desde droides hechos de basura, hasta los héroes y villanos más emblemáticos de la saga del espacio, a continuación te enlistamos a los personajes de Star Wars.
 				<br/>

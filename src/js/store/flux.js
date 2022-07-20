@@ -8,28 +8,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 			planetas: [],
 			naves: [],
 			favoritos: ["luke","sky"],
-			pid: "",
+
 		},
 		actions: {
 			
 			getPersonajes: async() => {
 				try{
 					const resp = await fetch('https://www.swapi.tech/api/people/', {
-					  method: "GET", // Si no se le especifica metodo es GET, aqui sobraría.
+					  method: "GET", 
 					})
 				
-					const data = await resp.json(); // (returns promise) will try to parse the result as json as return a promise that you can .then for results
+					const data = await resp.json(); 
 					setStore({ personajes : data.results})
-					 data.results.map ( async(item) => {
-						const resp = await fetch(item.url, {
-							method: "GET",
-						})
-						const data = await resp.json();
-						//setStore([{...cartas},{cartas : data.result.properties}])
-						setStore({cartas : data.result.properties})
-					  })
-					  
-					return null;					  
+					return null;
+
 				  } catch(error) {
 					  console.log(error);
 				  }
@@ -64,7 +56,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					  method: "GET", 
 					})				
 					  const data = await resp.json();
-					  setStore({ personales : data.result.properties})
+					  setStore({ cartas : data.result.properties})
 					return null;				
 				  } catch(error) {
 					  console.log(error);

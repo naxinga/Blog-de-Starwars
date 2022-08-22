@@ -1,4 +1,3 @@
-import { Personajes } from "../views/personajes";
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
@@ -9,7 +8,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			cartasP: [],
 			naves: [],
 			cartasV: [],
-			favoritos: ["luke","sky"],
+			favoritos: [],
 
 		},
 		actions: {
@@ -76,9 +75,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					  console.log(error);
 				  }
 			},
-			addFavs: (add) =>{
-				setStore([...favoritos,{favoritos : add.name}])
-			},
+		
 			getCartasV: async(id) => {
 				try{
 					const resp = await fetch('https://www.swapi.tech/api/starships/'+ id, {
@@ -91,15 +88,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 					  console.log(error);
 				  }
 			},
-			addFavs: (add) =>{
-				setStore([...favoritos,{favoritos : add.name}])
-			},
+			
+			addFavoritos: itemName => {
+				const {favoritos} = getStore();
+				if (!favoritos.find(i => i == itemName )){
+					favoritos.push(itemName)
+				}
+				console.log(favoritos)
+				setStore({favoritos})
 
-			delFavs: (del) =>{
-				let a = [...favoritos]
-        		a.splice(del,1);
-        		setStore({favoritos: a});
-			}
+			}, 
+
+			deleteFavoritos: itemIndex => {
+				const {favoritos} = getStore();
+				const newFav = [...favoritos]
+				newFav.splice(itemIndex,1)
+				setStore({favoritos: newFav})
+			},
 			
 			
 		}
